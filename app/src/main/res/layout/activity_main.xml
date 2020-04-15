@@ -138,7 +138,7 @@
         android:id="@+id/diceTextResult2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="234dp"
+        android:layout_marginEnd="272dp"
         android:layout_marginBottom="56dp"
         android:fontFamily="casual"
         android:text="0"
@@ -146,7 +146,7 @@
         app:layout_constraintBottom_toTopOf="@+id/button_dice_minus"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/diceTextResult3"
-        app:layout_constraintVertical_bias=".8" />
+        app:layout_constraintVertical_bias="0.802" />
 
     <TextView
         android:id="@+id/diceTextResult3"
@@ -198,10 +198,11 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="50dp"
         android:layout_marginEnd="10dp"
+        android:layout_marginBottom="20dp"
         android:background="#00FFFFFF"
         android:text="Button"
         android:textColor="#00FFFFFF"
-        app:layout_constraintBottom_toBottomOf="@+id/imageDice2"
+        app:layout_constraintBottom_toTopOf="@+id/text_dice_count"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_sides_count" />
@@ -210,110 +211,106 @@
         android:id="@+id/spinningDice1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:layout_marginEnd="50dp"
         android:src="@drawable/dice_spinning"
         android:tint="#4CAF50"
         android:tintMode="multiply"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_sides_count" />
-
-    <pl.droidsonroids.gif.GifImageView
-        android:id="@+id/spinningDice4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="60dp"
-        android:layout_marginBottom="50dp"
-        android:src="@drawable/dice_spinning"
-        android:tint="#4CAF50"
-        android:tintMode="multiply"
-        app:layout_constraintBottom_toTopOf="@+id/button_dice_plus"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <pl.droidsonroids.gif.GifImageView
-        android:id="@+id/spinningDice3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="130dp"
-        android:layout_marginEnd="280dp"
-        android:src="@drawable/dice_spinning"
-        android:tint="#4CAF50"
-        android:tintMode="multiply"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_sides_count" />
-
-    <pl.droidsonroids.gif.GifImageView
-        android:id="@+id/spinningDice2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="234dp"
-        android:layout_marginBottom="56dp"
-        android:src="@drawable/dice_spinning"
-        android:tint="#4CAF50"
-        android:tintMode="multiply"
-        app:layout_constraintBottom_toTopOf="@+id/button_dice_minus"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/diceTextResult3"
-        app:layout_constraintVertical_bias=".8" />
+        app:layout_constraintBottom_toBottomOf="@+id/diceTextResult1"
+        app:layout_constraintEnd_toEndOf="@+id/imageDice1"
+        app:layout_constraintStart_toStartOf="@+id/imageDice1" />
 
     <ImageView
         android:id="@+id/imageDice1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginStart="13dp"
         android:scaleType="centerInside"
         android:scaleX=".7"
         android:scaleY=".7"
         android:tint="#649540"
         android:tintMode="multiply"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_sides_count"
+        app:layout_constraintStart_toEndOf="@+id/imageDice3"
+        app:layout_constraintTop_toTopOf="@+id/button_invisible_roll"
         app:srcCompat="@drawable/test_dice" />
 
     <ImageView
         android:id="@+id/imageDice2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="166dp"
-        android:layout_marginBottom="-25dp"
+        android:layout_marginStart="16dp"
+        android:scaleType="fitStart"
         android:scaleX=".8"
         android:scaleY=".8"
         android:tint="#6DC140"
         android:tintMode="multiply"
-        app:layout_constraintBottom_toTopOf="@+id/button_dice_minus"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageDice3"
-        app:layout_constraintVertical_bias=".8"
+        app:layout_constraintBottom_toBottomOf="@+id/button_dice_minus"
+        app:layout_constraintStart_toStartOf="@+id/button_invisible_roll"
         app:srcCompat="@drawable/test_dice" />
+
+    <pl.droidsonroids.gif.GifImageView
+        android:id="@+id/spinningDice2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="59dp"
+        android:layout_marginEnd="58dp"
+        android:src="@drawable/dice_spinning"
+        android:tint="#4CAF50"
+        android:tintMode="multiply"
+        app:layout_constraintEnd_toStartOf="@+id/imageDice4"
+        app:layout_constraintStart_toStartOf="@+id/imageDice2"
+        app:layout_constraintTop_toTopOf="@+id/diceTextResult2" />
 
     <ImageView
         android:id="@+id/imageDice3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="78dp"
-        android:layout_marginEnd="190dp"
         android:scaleType="centerInside"
         android:scaleX=".7"
         android:scaleY=".7"
         android:tint="#68A33E"
         android:tintMode="multiply"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_sides_count"
+        app:layout_constraintStart_toStartOf="@+id/button_invisible_roll"
+        app:layout_constraintTop_toBottomOf="@+id/text_click_to_roll"
         app:srcCompat="@drawable/test_dice" />
+
+    <pl.droidsonroids.gif.GifImageView
+        android:id="@+id/spinningDice3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        android:src="@drawable/dice_spinning"
+        android:tint="#4CAF50"
+        android:tintMode="multiply"
+        app:layout_constraintEnd_toEndOf="@+id/diceTextResult3"
+        app:layout_constraintStart_toEndOf="@+id/diceTextResult3"
+        app:layout_constraintTop_toTopOf="@+id/diceTextResult3" />
 
     <ImageView
         android:id="@+id/imageDice4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="5dp"
-        android:layout_marginBottom="5dp"
+        android:layout_marginStart="29dp"
+        android:layout_marginEnd="10dp"
         android:scaleType="centerInside"
         android:scaleX=".55"
         android:scaleY=".55"
         android:tint="#78C344"
         android:tintMode="multiply"
-        app:layout_constraintBottom_toTopOf="@+id/button_dice_plus"
+        app:layout_constraintBottom_toTopOf="@+id/text_dice_count"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/text_dice_count"
         app:srcCompat="@drawable/test_dice" />
+
+    <pl.droidsonroids.gif.GifImageView
+        android:id="@+id/spinningDice4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="19dp"
+        android:src="@drawable/dice_spinning"
+        android:tint="#4CAF50"
+        android:tintMode="multiply"
+        app:layout_constraintBottom_toBottomOf="@+id/diceTextResult4"
+        app:layout_constraintEnd_toEndOf="@+id/diceTextResult4"
+        app:layout_constraintStart_toEndOf="@+id/diceTextResult4" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
