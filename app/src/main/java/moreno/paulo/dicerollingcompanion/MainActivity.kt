@@ -92,6 +92,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun updateDiceImageInView() {
+        when (this.numberOfSides) {
+            4, 5 -> setImagesTo(R.drawable.dice4)
+            6, 7 -> setImagesTo(R.drawable.dice6)
+            8, 9 -> setImagesTo(R.drawable.dice8)
+            10, 11, 12, 13, 14 -> setImagesTo(R.drawable.dice10)
+            else -> setImagesTo(R.drawable.dice20)
+        }
         setIntroAnimationOffAndShowDice()
     }
 
@@ -136,5 +143,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun hideAllDiceThrowsText() {
         allDiceTextResults.forEach { it.visibility = View.INVISIBLE }
+    }
+
+    private fun setImagesTo(diceImageIndex: Int) {
+        allDiceImages.forEach { it.setImageResource(diceImageIndex)}
     }
 }
