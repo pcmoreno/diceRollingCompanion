@@ -231,7 +231,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageDice3"
         app:layout_constraintTop_toTopOf="@+id/button_invisible_roll"
-        app:srcCompat="@drawable/test_dice" />
+        app:srcCompat="@drawable/dice20" />
 
     <ImageView
         android:id="@+id/imageDice2"
@@ -245,7 +245,7 @@
         android:tintMode="multiply"
         app:layout_constraintBottom_toBottomOf="@+id/button_dice_minus"
         app:layout_constraintStart_toStartOf="@+id/button_invisible_roll"
-        app:srcCompat="@drawable/test_dice" />
+        app:srcCompat="@drawable/dice20" />
 
     <pl.droidsonroids.gif.GifImageView
         android:id="@+id/spinningDice2"
@@ -271,7 +271,7 @@
         android:tintMode="multiply"
         app:layout_constraintStart_toStartOf="@+id/button_invisible_roll"
         app:layout_constraintTop_toBottomOf="@+id/text_click_to_roll"
-        app:srcCompat="@drawable/test_dice" />
+        app:srcCompat="@drawable/dice20" />
 
     <pl.droidsonroids.gif.GifImageView
         android:id="@+id/spinningDice3"
@@ -299,7 +299,7 @@
         app:layout_constraintBottom_toTopOf="@+id/text_dice_count"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/text_dice_count"
-        app:srcCompat="@drawable/test_dice" />
+        app:srcCompat="@drawable/dice20" />
 
     <pl.droidsonroids.gif.GifImageView
         android:id="@+id/spinningDice4"
