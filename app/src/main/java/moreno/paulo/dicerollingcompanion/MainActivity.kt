@@ -85,19 +85,19 @@ class MainActivity : AppCompatActivity() {
                     hideAllDiceThrowsText()
                 }
             } else if (status != Status.ROLLING){
-                setIntroAnimationOffAndShowDice()
+                updateDiceImageInView()
                 hideUnusedDices()
             }
         }
     }
 
     private fun updateDiceImageInView() {
-        when (this.numberOfSides) {
-            4, 5 -> setImagesTo(R.drawable.dice4)
-            6, 7 -> setImagesTo(R.drawable.dice6)
-            8, 9 -> setImagesTo(R.drawable.dice8)
-            10, 11, 12, 13, 14 -> setImagesTo(R.drawable.dice10)
-            else -> setImagesTo(R.drawable.dice20)
+        when (numberOfSides) {
+            in 4..5 -> setDiceImagesTo(R.drawable.dice4)
+            in 6..7 -> setDiceImagesTo(R.drawable.dice6)
+            in 8..9 -> setDiceImagesTo(R.drawable.dice8)
+            in 10..14 -> setDiceImagesTo(R.drawable.dice10)
+            else -> setDiceImagesTo(R.drawable.dice20)
         }
         setIntroAnimationOffAndShowDice()
     }
@@ -145,7 +145,7 @@ class MainActivity : AppCompatActivity() {
         allDiceTextResults.forEach { it.visibility = View.INVISIBLE }
     }
 
-    private fun setImagesTo(diceImageIndex: Int) {
+    private fun setDiceImagesTo(diceImageIndex: Int) {
         allDiceImages.forEach { it.setImageResource(diceImageIndex)}
     }
 }
