@@ -38,25 +38,33 @@ class MainActivity : AppCompatActivity() {
         text_dice_count.text = """$numberOfDice"""
 
         button_side_minus.setOnClickListener{
-            if (numberOfSides > 4)(--numberOfSides).toString()
-            text_sides_count.text = """$numberOfSides"""
-            updateDiceImageInView()
+            if (status != Status.ROLLING) {
+                if (numberOfSides > 4)(--numberOfSides).toString()
+                text_sides_count.text = """$numberOfSides"""
+                updateDiceImageInView()
+            }
         }
         button_side_plus.setOnClickListener{
-            if (numberOfSides < 20) (++numberOfSides).toString()
-            text_sides_count.text = """$numberOfSides"""
-            updateDiceImageInView()
+            if (status != Status.ROLLING) {
+                if (numberOfSides < 20) (++numberOfSides).toString()
+                text_sides_count.text = """$numberOfSides"""
+                updateDiceImageInView()
+            }
         }
 
         button_dice_minus.setOnClickListener{
-            if (numberOfDice > 1)(--numberOfDice).toString()
-            text_dice_count.text = """$numberOfDice"""
-            updateDiceImageInView()
+            if (status != Status.ROLLING) {
+                if (numberOfDice > 1) (--numberOfDice).toString()
+                text_dice_count.text = """$numberOfDice"""
+                updateDiceImageInView()
+            }
         }
         button_dice_plus.setOnClickListener{
-            if (numberOfDice < 4)(++numberOfDice).toString()
-            text_dice_count.text = """$numberOfDice"""
-            updateDiceImageInView()
+            if (status != Status.ROLLING) {
+                if (numberOfDice < 4) (++numberOfDice).toString()
+                text_dice_count.text = """$numberOfDice"""
+                updateDiceImageInView()
+            }
         }
         button_invisible_roll.setOnClickListener{
             if (status == Status.READY_TO_ROLL) {
@@ -76,7 +84,7 @@ class MainActivity : AppCompatActivity() {
                     allDiceAnims[i - 1].visibility = View.VISIBLE
                     hideAllDiceThrowsText()
                 }
-            } else if (status == Status.JUST_ROLLED){
+            } else if (status != Status.ROLLING){
                 setIntroAnimationOffAndShowDice()
                 hideUnusedDices()
             }
