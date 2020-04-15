@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#4CAF50"
+    android:backgroundTintMode="src_atop"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/text_sides_question"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="How many sides?"
+        android:textSize="24sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/text_dice_question"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="How many dice?"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageButton
+        android:id="@+id/button_side_minus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="50dp"
+        android:background="#4CAF50"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/button_minus" />
+
+    <ImageButton
+        android:id="@+id/button_side_plus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="50dp"
+        android:background="#4CAF50"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/button_plus" />
+
+    <TextView
+        android:id="@+id/text_sides_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:fontFamily="casual"
+        android:text="76"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toStartOf="@+id/button_side_plus"
+        app:layout_constraintStart_toEndOf="@+id/button_side_minus"
+        app:layout_constraintTop_toTopOf="@+id/text_sides_question" />
+
+    <pl.droidsonroids.gif.GifImageView
+        android:id="@+id/diceAnim"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="200dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="200dp"
+        android:background="#4CAF50"
+        android:contentDescription="dice animation"
+        android:src="@drawable/intro_animation_dice"
+        android:tint="#4CAF50"
+        android:tintMode="multiply"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageButton
+        android:id="@+id/button_dice_minus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginBottom="50dp"
+        android:background="#4CAF50"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/button_minus" />
+
+    <ImageButton
+        android:id="@+id/button_dice_plus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="50dp"
+        android:background="#4CAF50"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/button_plus" />
+
+    <TextView
+        android:id="@+id/text_dice_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="50dp"
+        android:fontFamily="casual"
+        android:text="222"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/button_dice_plus"
+        app:layout_constraintStart_toEndOf="@+id/button_dice_minus" />
+
+    <TextView
+        android:id="@+id/diceTextResult1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="5dp"
+        android:fontFamily="casual"
+        android:text="0"
+        android:textSize="46sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.812"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_sides_count" />
+
+    <TextView
+        android:id="@+id/diceTextResult2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="234dp"
+        android:layout_marginBottom="56dp"
+        android:fontFamily="casual"
+        android:text="0"
+        android:textSize="46sp"
+        app:layout_constraintBottom_toTopOf="@+id/button_dice_minus"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/diceTextResult3"
+        app:layout_constraintVertical_bias=".8" />
+
+    <TextView
+        android:id="@+id/diceTextResult3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="130dp"
+        android:layout_marginEnd="280dp"
+        android:fontFamily="casual"
+        android:text="0"
+        android:textSize="46sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.812"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_sides_count" />
+
+    <TextView
+        android:id="@+id/diceTextResult4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="37dp"
+        android:layout_marginBottom="50dp"
+        android:fontFamily="casual"
+        android:text="0"
+        android:textSize="46sp"
+        app:layout_constraintBottom_toTopOf="@+id/button_dice_plus"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.812"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/text_click_to_roll"
+        android:layout_width="202dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="25dp"
+        android:fontFamily="casual"
+        android:text="Click To Roll"
+        android:textAlignment="center"
+        android:textColor="#FAF5F5"
+        android:textSize="30sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_sides_count" />
+
+    <Button
+        android:id="@+id/button_invisible_roll"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="10dp"
+        android:background="#00FFFFFF"
+        android:text="Button"
+        android:textColor="#00FFFFFF"
+        app:layout_constraintBottom_toBottomOf="@+id/imageDice2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_sides_count" />
+
+    <pl.droidsonroids.gif.GifImageView
+        android:id="@+id/spinningDice1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="50dp"
+        android:src="@drawable/dice_spinning"
+        android:tint="#4CAF50"
+        android:tintMode="multiply"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_sides_count" />
+
+    <pl.droidsonroids.gif.GifImageView
+        android:id="@+id/spinningDice4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="60dp"
+        android:layout_marginBottom="50dp"
+        android:src="@drawable/dice_spinning"
+        android:tint="#4CAF50"
+        android:tintMode="multiply"
+        app:layout_constraintBottom_toTopOf="@+id/button_dice_plus"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <pl.droidsonroids.gif.GifImageView
+        android:id="@+id/spinningDice3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="130dp"
+        android:layout_marginEnd="280dp"
+        android:src="@drawable/dice_spinning"
+        android:tint="#4CAF50"
+        android:tintMode="multiply"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_sides_count" />
+
+    <pl.droidsonroids.gif.GifImageView
+        android:id="@+id/spinningDice2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="234dp"
+        android:layout_marginBottom="56dp"
+        android:src="@drawable/dice_spinning"
+        android:tint="#4CAF50"
+        android:tintMode="multiply"
+        app:layout_constraintBottom_toTopOf="@+id/button_dice_minus"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/diceTextResult3"
+        app:layout_constraintVertical_bias=".8" />
+
+    <ImageView
+        android:id="@+id/imageDice1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:scaleType="centerInside"
+        android:scaleX=".7"
+        android:scaleY=".7"
+        android:tint="#649540"
+        android:tintMode="multiply"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_sides_count"
+        app:srcCompat="@drawable/test_dice" />
+
+    <ImageView
+        android:id="@+id/imageDice2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="166dp"
+        android:layout_marginBottom="-25dp"
+        android:scaleX=".8"
+        android:scaleY=".8"
+        android:tint="#6DC140"
+        android:tintMode="multiply"
+        app:layout_constraintBottom_toTopOf="@+id/button_dice_minus"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageDice3"
+        app:layout_constraintVertical_bias=".8"
+        app:srcCompat="@drawable/test_dice" />
+
+    <ImageView
+        android:id="@+id/imageDice3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="78dp"
+        android:layout_marginEnd="190dp"
+        android:scaleType="centerInside"
+        android:scaleX=".7"
+        android:scaleY=".7"
+        android:tint="#68A33E"
+        android:tintMode="multiply"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_sides_count"
+        app:srcCompat="@drawable/test_dice" />
+
+    <ImageView
+        android:id="@+id/imageDice4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="5dp"
+        android:scaleType="centerInside"
+        android:scaleX=".55"
+        android:scaleY=".55"
+        android:tint="#78C344"
+        android:tintMode="multiply"
+        app:layout_constraintBottom_toTopOf="@+id/button_dice_plus"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/test_dice" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
