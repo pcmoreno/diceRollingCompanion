@@ -25,13 +25,6 @@ class MainActivity : AppCompatActivity() {
 
         initialize()
 
-        text_click_to_roll.visibility = View.INVISIBLE
-        diceTextResult1.visibility = View.INVISIBLE
-        spinningDice1.visibility = View.INVISIBLE
-
-        text_sides_count.text = """$numberOfSides"""
-        text_dice_count.text = """$numberOfDice"""
-
         button_side_minus.setOnClickListener{
             if (status != Status.ROLLING) {
                 if (numberOfSides > 4)(--numberOfSides).toString()
@@ -94,24 +87,19 @@ class MainActivity : AppCompatActivity() {
             in 10..14 -> setDiceImagesTo(R.drawable.dice10)
             else -> setDiceImagesTo(R.drawable.dice20)
         }
-        setIntroAnimationOffAndShowDice()
+        resetViewAndShowDice()
     }
 
     private fun roll():Int {
         return Random.nextInt(1, numberOfSides + 1)
     }
 
-    private fun setIntroAnimationOffAndShowDice() {
+    private fun resetViewAndShowDice() {
         diceAnim.visibility = View.GONE
         status = Status.READY_TO_ROLL
         hideAllDiceThrowsText()
         text_click_to_roll.visibility = View.VISIBLE
-        for (i in 1..numberOfDice) {
-            allDiceImages[i - 1].visibility = View.VISIBLE
-        }
-        for (i in numberOfDice..3) {
-            allDiceImages[i].visibility = View.INVISIBLE
-        }
+        hideUnusedDices()
     }
 
     private fun hideUnusedDices() {
@@ -127,6 +115,13 @@ class MainActivity : AppCompatActivity() {
         allDiceTextResults = listOf<TextView>(diceTextResult1, diceTextResult2, diceTextResult3, diceTextResult4)
 
         this.status = Status.NOT_READY_TO_ROLL_YET
+
+        text_click_to_roll.visibility = View.INVISIBLE
+        diceTextResult1.visibility = View.INVISIBLE
+        spinningDice1.visibility = View.INVISIBLE
+
+        text_sides_count.text = """$numberOfSides"""
+        text_dice_count.text = """$numberOfDice"""
 
         hideAllDices()
         hideAllDiceAnimations()
