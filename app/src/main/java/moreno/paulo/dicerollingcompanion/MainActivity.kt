@@ -18,6 +18,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var allDiceAnims: List<GifImageView>
     private lateinit var allDiceTextResults: List<TextView>
     private var status: Status = Status.NOT_READY_TO_ROLL_YET
+    private var soundOn: Boolean = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -62,8 +63,7 @@ class MainActivity : AppCompatActivity() {
                     for (i in 1..numberOfDice) {
                         allDiceTextResults[i - 1].visibility = View.VISIBLE
                     }
-                    val mediaPlayer: MediaPlayer? = MediaPlayer.create(this, R.raw.tadaa)
-                    mediaPlayer?.start()
+                    playRollFinishedSound()
                     status = Status.JUST_ROLLED
                 }, (1000L + Random.nextInt(1, 2001)))
                 for (i in 1..numberOfDice) {
@@ -75,6 +75,18 @@ class MainActivity : AppCompatActivity() {
             } else if (status != Status.ROLLING){
                 updateDiceImageInView()
                 hideUnusedDices()
+            }
+        }
+        buttonSound.setOnClickListener{
+            when (soundOn) {
+                true -> {
+                    soundOn = false
+                    buttonSound.setImageResource(R.drawable.sound_off)
+                }
+                false -> {
+                    soundOn = true
+                    buttonSound.setImageResource(R.drawable.sound_on)
+                }
             }
         }
     }
@@ -142,5 +154,12 @@ class MainActivity : AppCompatActivity() {
 
     private fun setDiceImagesTo(diceImageIndex: Int) {
         allDiceImages.forEach { it.setImageResource(diceImageIndex)}
+    }
+
+    private fun playRollFinishedSound() {
+        if (soundOn) {
+            val mediaPlayer: MediaPlayer? = MediaPlayer.create(this, R.raw.tadaa)
+            mediaPlayer?.start()
+        }
     }
 }

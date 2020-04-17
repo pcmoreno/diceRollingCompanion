@@ -9,8 +9,8 @@ android {
         applicationId "moreno.paulo.dicerollingcompanion"
         minSdkVersion 22
         targetSdkVersion 28
-        versionCode 3
-        versionName "1.3.1"
+        versionCode 4
+        versionName "1.3.2"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
