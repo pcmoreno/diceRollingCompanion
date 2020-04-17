@@ -12,7 +12,6 @@ import pl.droidsonroids.gif.GifImageView
 import kotlin.random.Random
 
 class MainActivity : AppCompatActivity() {
-
     private var numberOfSides = 6
     private var numberOfDice = 2
     private lateinit var allDiceImages: List<ImageView>
@@ -23,10 +22,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        allDiceImages = listOf<ImageView>(imageDice1, imageDice2, imageDice3, imageDice4)
-        allDiceAnims = listOf<GifImageView>(spinningDice1, spinningDice2, spinningDice3, spinningDice4)
-        allDiceTextResults = listOf<TextView>(diceTextResult1, diceTextResult2, diceTextResult3, diceTextResult4)
 
         initialize()
 
@@ -127,7 +122,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initialize() {
+        allDiceImages = listOf<ImageView>(imageDice1, imageDice2, imageDice3, imageDice4)
+        allDiceAnims = listOf<GifImageView>(spinningDice1, spinningDice2, spinningDice3, spinningDice4)
+        allDiceTextResults = listOf<TextView>(diceTextResult1, diceTextResult2, diceTextResult3, diceTextResult4)
+
         this.status = Status.NOT_READY_TO_ROLL_YET
+
         hideAllDices()
         hideAllDiceAnimations()
         hideAllDiceThrowsText()
