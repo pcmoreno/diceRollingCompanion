@@ -1,5 +1,6 @@
 package moreno.paulo.dicerollingcompanion
 
+import android.content.Context
 import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -76,6 +77,7 @@ class MainActivity : AppCompatActivity() {
                 updateDiceImageInView()
                 hideUnusedDices()
             }
+            saveCurrentPreferences()
         }
         buttonSound.setOnClickListener{
             when (soundOn) {
@@ -122,6 +124,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initialize() {
+        loadPreferences()
+
         allDiceImages = listOf<ImageView>(imageDice1, imageDice2, imageDice3, imageDice4)
         allDiceAnims = listOf<GifImageView>(spinningDice1, spinningDice2, spinningDice3, spinningDice4)
         allDiceTextResults = listOf<TextView>(diceTextResult1, diceTextResult2, diceTextResult3, diceTextResult4)
@@ -160,6 +164,25 @@ class MainActivity : AppCompatActivity() {
         if (soundOn) {
             val mediaPlayer: MediaPlayer? = MediaPlayer.create(this, R.raw.tadaa)
             mediaPlayer?.start()
+        }
+    }
+
+    private fun saveCurrentPreferences() {
+        val sharedPreferencesEditor = this.getPreferences(Context.MODE_PRIVATE).edit()
+        sharedPreferencesEditor.putInt(getString(R.string.number_of_sides), numberOfSides)
+        sharedPreferencesEditor.putInt(getString(R.string.number_of_dice), numberOfDice)
+        sharedPreferencesEditor.putBoolean(getString(R.string.sound_is_on), soundOn)
+        sharedPreferencesEditor.apply()
+    }
+
+    private fun loadPreferences() {
+        val sharedPref = this.getPreferences(Context.MODE_PRIVATE)
+        numberOfSides = sharedPref.getInt(getString(R.string.number_of_sides), 6)
+        numberOfDice = sharedPref.getInt(getString(R.string.number_of_dice), 2)
+        soundOn = sharedPref.getBoolean(getString(R.string.sound_is_on), true)
+        when (soundOn) {
+            true -> buttonSound.setImageResource(R.drawable.sound_on)
+            false -> buttonSound.setImageResource(R.drawable.sound_off)
         }
     }
 }
