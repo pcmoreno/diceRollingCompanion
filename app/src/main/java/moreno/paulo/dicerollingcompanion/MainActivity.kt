@@ -8,7 +8,7 @@ import android.os.Handler
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
-import kotlinx.android.synthetic.main.activity_main.*
+import moreno.paulo.dicerollingcompanion.databinding.ActivityMainBinding
 import pl.droidsonroids.gif.GifImageView
 import kotlin.random.Random
 
@@ -20,43 +20,45 @@ class MainActivity : AppCompatActivity() {
     private lateinit var allDiceTextResults: List<TextView>
     private var status: Status = Status.NOT_READY_TO_ROLL_YET
     private var soundOn: Boolean = true
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        val view: View = binding.root
+        setContentView(view)
 
         initialize()
-
-        button_side_minus.setOnClickListener{
+        binding.buttonSideMinus.setOnClickListener{
             if (status != Status.ROLLING) {
                 if (numberOfSides > 4)(--numberOfSides).toString()
-                text_sides_count.text = """$numberOfSides"""
+                binding.textSidesCount.text = """$numberOfSides"""
                 updateDiceImageInView()
             }
         }
-        button_side_plus.setOnClickListener{
+        binding.buttonSidePlus.setOnClickListener{
             if (status != Status.ROLLING) {
                 if (numberOfSides < 20) (++numberOfSides).toString()
-                text_sides_count.text = """$numberOfSides"""
+                binding.textSidesCount.text = """$numberOfSides"""
                 updateDiceImageInView()
             }
         }
 
-        button_dice_minus.setOnClickListener{
+        binding.buttonDiceMinus.setOnClickListener{
             if (status != Status.ROLLING) {
                 if (numberOfDice > 1) (--numberOfDice).toString()
-                text_dice_count.text = """$numberOfDice"""
+                binding.textDiceCount.text = """$numberOfDice"""
                 updateDiceImageInView()
             }
         }
-        button_dice_plus.setOnClickListener{
+        binding.buttonDicePlus.setOnClickListener{
             if (status != Status.ROLLING) {
                 if (numberOfDice < 4) (++numberOfDice).toString()
-                text_dice_count.text = """$numberOfDice"""
+                binding.textDiceCount.text = """$numberOfDice"""
                 updateDiceImageInView()
             }
         }
-        button_invisible_roll.setOnClickListener{
+        binding.buttonInvisibleRoll.setOnClickListener{
             if (status == Status.READY_TO_ROLL) {
                 Handler().postDelayed({
                     allDiceTextResults.forEach { it.text = roll().toString() }
@@ -79,15 +81,15 @@ class MainActivity : AppCompatActivity() {
             }
             saveCurrentPreferences()
         }
-        buttonSound.setOnClickListener{
+        binding.buttonSound.setOnClickListener{
             when (soundOn) {
                 true -> {
                     soundOn = false
-                    buttonSound.setImageResource(R.drawable.sound_off)
+                    binding.buttonSound.setImageResource(R.drawable.sound_off)
                 }
                 false -> {
                     soundOn = true
-                    buttonSound.setImageResource(R.drawable.sound_on)
+                    binding.buttonSound.setImageResource(R.drawable.sound_on)
                 }
             }
         }
@@ -109,10 +111,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun resetViewAndShowDice() {
-        diceAnim.visibility = View.GONE
+        binding.diceAnim.visibility = View.GONE
         status = Status.READY_TO_ROLL
         hideAllDiceThrowsText()
-        text_click_to_roll.visibility = View.VISIBLE
+        binding.textClickToRoll.visibility = View.VISIBLE
         hideUnusedDices()
     }
 
@@ -126,18 +128,18 @@ class MainActivity : AppCompatActivity() {
     private fun initialize() {
         loadPreferences()
 
-        allDiceImages = listOf<ImageView>(imageDice1, imageDice2, imageDice3, imageDice4)
-        allDiceAnims = listOf<GifImageView>(spinningDice1, spinningDice2, spinningDice3, spinningDice4)
-        allDiceTextResults = listOf<TextView>(diceTextResult1, diceTextResult2, diceTextResult3, diceTextResult4)
+        allDiceImages = listOf<ImageView>(binding.imageDice1, binding.imageDice2, binding.imageDice3, binding.imageDice4)
+        allDiceAnims = listOf<GifImageView>(binding.spinningDice1, binding.spinningDice2, binding.spinningDice3, binding.spinningDice4)
+        allDiceTextResults = listOf<TextView>(binding.diceTextResult1, binding.diceTextResult2, binding.diceTextResult3, binding.diceTextResult4)
 
         this.status = Status.NOT_READY_TO_ROLL_YET
 
-        text_click_to_roll.visibility = View.INVISIBLE
-        diceTextResult1.visibility = View.INVISIBLE
-        spinningDice1.visibility = View.INVISIBLE
+        binding.textClickToRoll.visibility = View.INVISIBLE
+        binding.diceTextResult1.visibility = View.INVISIBLE
+        binding.spinningDice1.visibility = View.INVISIBLE
 
-        text_sides_count.text = """$numberOfSides"""
-        text_dice_count.text = """$numberOfDice"""
+        binding.textSidesCount.text = """$numberOfSides"""
+        binding.textDiceCount.text = """$numberOfDice"""
 
         hideAllDices()
         hideAllDiceAnimations()
@@ -181,8 +183,8 @@ class MainActivity : AppCompatActivity() {
         numberOfDice = sharedPref.getInt(getString(R.string.number_of_dice), 2)
         soundOn = sharedPref.getBoolean(getString(R.string.sound_is_on), true)
         when (soundOn) {
-            true -> buttonSound.setImageResource(R.drawable.sound_on)
-            false -> buttonSound.setImageResource(R.drawable.sound_off)
+            true -> binding.buttonSound.setImageResource(R.drawable.sound_on)
+            false -> binding.buttonSound.setImageResource(R.drawable.sound_off)
         }
     }
 }
